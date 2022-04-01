@@ -14,14 +14,14 @@ import org.springframework.web.client.RestTemplate;
 @Component
 public class BalancerClientHandler {
 
-//    @Autowired
-//    LoadBalancerClient loadBalancerClient;
-//
-//    public  Object handler(String serviceId, String url, Class returnClass) {
-//        ServiceInstance serviceInstance = loadBalancerClient.choose(serviceId);
-//        String absoluteUrl = serviceInstance.getUri() + url;
-//        RestTemplate restTemplate = new RestTemplate();
-//        Object result = restTemplate.getForObject(absoluteUrl, returnClass);
-//        return result;
-//    }
+    @Autowired
+    LoadBalancerClient loadBalancerClient;
+
+    public  Object handler(String serviceId, String url, Class returnClass) {
+        ServiceInstance serviceInstance = loadBalancerClient.choose(serviceId);
+        String absoluteUrl = serviceInstance.getUri() + url;
+        RestTemplate restTemplate = new RestTemplate();
+        Object result = restTemplate.getForObject(absoluteUrl, returnClass);
+        return result;
+    }
 }
